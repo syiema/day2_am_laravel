@@ -16,4 +16,4 @@ class UserController extends Controller
         // return view resources/views/transactions/index.php
         return view('users.index', compact('users'));
     }
-}
+} 
