@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Transaction extends Model
 {
     use HasFactory;
+
+    // define relationship
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }
