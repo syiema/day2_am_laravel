@@ -22,7 +22,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Route::method('url',[Controller,method])->name('name');
-Route::get('/transactions',[App\Http\Controllers\TransactionController::class,'index'])->name('transactions.index');
+Route::get('/transactions',[App\Http\Controllers\TransactionController::class,'index'])->name('transactions.index')->middleware('auth');
 Route::get('/transactions/create',[App\Http\Controllers\TransactionController::class,'create'])->name('transactions.create');
 Route::post('/transactions/create',[App\Http\Controllers\TransactionController::class,'store'])->name('transactions.store');
 Route::get('/transactions/{transaction}',[App\Http\Controllers\TransactionController::class,'show'])->name('transactions.show');
@@ -32,4 +32,4 @@ Route::post('/transactions/{transaction}/edit',[App\Http\Controllers\Transaction
 
 Route::get('/transactions/{transaction}/delete',[App\Http\Controllers\TransactionController::class,'delete'])->name('transactions.delete');
 
-Route::get('users',[App\Http\Controllers\UserController::class,'index'])->name('users.index');
+Route::get('users',[App\Http\Controllers\UserController::class,'index'])->name('users.index')->middleware('auth');

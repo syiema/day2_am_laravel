@@ -18,9 +18,15 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+//Login
+Route::post('/login',[App\Http\Controllers\API\AuthController::class, 'login'])->name('login');
+
+//Logout
+Route::get('/logout',[App\Http\Controllers\API\AuthController::class, 'logout'])->name('logout')->middleware('auth:api');
+
 //Visits
 //index
-Route::get('/visits',[App\Http\Controllers\API\VisitController::class, 'index'])->name('visits.index');
+Route::get('/visits',[App\Http\Controllers\API\VisitController::class, 'index'])->name('visits.index')->middleware('auth:api');
 //store
 Route::post('/visits',[App\Http\Controllers\API\VisitController::class, 'store'])->name('visits.store');
 //show
@@ -31,7 +37,7 @@ Route::get('/visits/{visit}/delete',[App\Http\Controllers\API\VisitController::c
 
 //Vehicles
 //index
-Route::get('/vehicles',[App\Http\Controllers\API\VehicleController::class, 'index'])->name('vehicles.index');
+Route::get('/vehicles',[App\Http\Controllers\API\VehicleController::class, 'index'])->name('vehicles.index')->middleware('auth:api');
 //store
 Route::post('/vehicles',[App\Http\Controllers\API\VehicleController::class, 'store'])->name('vehicles.store');
 //show
